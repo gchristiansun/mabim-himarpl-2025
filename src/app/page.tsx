@@ -8,12 +8,10 @@ import { KelompokSection } from "@/components/common/kelompok-section";
 import { SponsorSection } from "@/components/common/sponsor-section";
 import { TimelineSection } from "@/components/common/timeline-section";
 import React from "react";
-import ParticlesComponent from "@/components/common/particles-background";
 
 export default function Home() {
   return (
     <main id="main" className="relative min-h-screen overflow-hidden">
-      <ParticlesComponent/>
 
       <Header />
 
