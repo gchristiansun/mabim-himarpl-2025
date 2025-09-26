@@ -11,7 +11,9 @@
 .social-link {
   background-color: #3243a6; /* bg-[#3243A6] */
   color: #ffffff; /* text-white */
-  box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1); /* shadow */
+  box-shadow:
+    0 1px 3px 0 rgb(0 0 0 / 0.1),
+    0 1px 2px -1px rgb(0 0 0 / 0.1); /* shadow */
   height: 2.25rem; /* h-9 */
   padding: 0.5rem 1rem; /* py-2 px-4 */
   display: inline-flex; /* inline-flex */
@@ -41,9 +43,11 @@
 }
 
 html {
-  scrollbar-width: none;
+  scrollbar-width: none !important;
+
   scrollbar-color: #3243a6 #ffffff;
 }
+
 @keyframes accordion-down {
   from {
     height: 0;

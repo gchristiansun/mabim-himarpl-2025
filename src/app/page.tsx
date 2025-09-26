@@ -1,4 +1,3 @@
-import Header from "@/components/common/header";
 import { CountdownSection } from "@/components/common/countdown-section";
 import { FaqSection } from "@/components/common/faq-section";
 import { Footer } from "@/components/common/footer";
@@ -12,9 +11,6 @@ import React from "react";
 export default function Home() {
   return (
     <main id="main" className="relative min-h-screen overflow-hidden">
-
-      <Header />
-
       <HeroSection />
 
       <KelompokSection />

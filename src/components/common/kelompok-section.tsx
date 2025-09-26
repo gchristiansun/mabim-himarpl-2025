@@ -139,7 +139,9 @@ export function KelompokSection() {
             ></Motion.div>
           </DialogTitle>
 
-          <DialogDescription className="text-center p-6 flex flex-col justify-between bg-[#680000]/40 w-full border border-[#FF0000]  shadow-[inset_0_0_37px_0_#FF0000] backdrop-blur-[56px] text-white md:text-3xl text-base uppercase gap-8">
+          <DialogDescription hidden>im mysterious</DialogDescription>
+
+          <div className="text-center p-6 flex flex-col justify-between bg-[#680000]/40 w-full border border-[#FF0000]  shadow-[inset_0_0_37px_0_#FF0000] backdrop-blur-[56px] text-white md:text-3xl text-base uppercase gap-8">
             <span className="font-montserrat  relative">
               Nama yang kamu masukkan salah! harap masukkan nama yang benar dengan nama lengkap.
               <span className="absolute inset-0 text-red-500 blur-sm  mix-blend-multiply">Nama yang kamu masukkan salah! harap masukkan nama yang benar dengan nama lengkap.</span>
@@ -148,7 +150,7 @@ export function KelompokSection() {
             <span className="font-jumbo relative">
               <GlitchText text="- Anonymous -" className="font-jumbo" />
             </span>
-          </DialogDescription>
+          </div>
         </DialogContent>
       </Dialog>
       <Dialog open={isOpen} onOpenChange={setIsOpen}>

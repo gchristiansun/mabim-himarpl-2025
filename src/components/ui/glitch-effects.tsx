@@ -16,7 +16,7 @@ export const GlitchText: React.FC<GlitchTextProps> = ({ text, className }) => {
 
       {/* Red offset */}
       <Motion.span
-        className="absolute top-0 left-[35%] text-red-500 mix-blend-screen"
+        className="absolute top-0 sm:left-[35%] left-0 text-red-500 mix-blend-screen"
         initial={{ x: 0 }}
         animate={{
           x: [0, -3, 3, -1, 0],
@@ -33,7 +33,7 @@ export const GlitchText: React.FC<GlitchTextProps> = ({ text, className }) => {
 
       {/* Blue offset */}
       <Motion.span
-        className="absolute top-0 left-[45%] text-blue-500 mix-blend-screen"
+        className="absolute top-0 sm:left-[45%] left-0 text-blue-500 mix-blend-screen"
         initial={{ x: 0 }}
         animate={{
           x: [0, 2, -2, 1, 0],
@@ -50,7 +50,7 @@ export const GlitchText: React.FC<GlitchTextProps> = ({ text, className }) => {
 
       {/* Random vertical slice */}
       <Motion.span
-        className="absolute top-0 left-[40%] overflow-hidden text-green-400"
+        className="absolute top-0 sm:left-[40%] left-0 overflow-hidden text-green-400"
         style={
           {
             clipPath: "inset(20% 0 60% 0)", // potong sebagian teks

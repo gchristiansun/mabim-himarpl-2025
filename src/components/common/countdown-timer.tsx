@@ -1,8 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion as Motion } from "motion/react";
 import Image from "next/image";
 import TimerDot from "@/assets/ornaments/timer-dot.svg";
 
@@ -17,19 +16,18 @@ const events = [
 export default function CountdownTimerTabs() {
   const [activeTab, setActiveTab] = useState(0);
   return (
-    <section className="flex flex-col items-center md:w-full w-xl mx-auto ">
-      <div className="flex justify-center gap-0 md:gap-5 lg:gap-20 mb-6 sm:mb-12 w-full h-20 bg-[#1B0A3D]/60 rounded-sm border border-white/50 px-2 py-2">
+    <section className="flex flex-col items-center w-full max-w-xl mx-auto py-6 px-2 md:px-0">
+      <div className="flex justify-start md:justify-center gap-0 md:gap-2 mb-6 w-full bg-[#1B0A3D]/60 rounded-lg border border-[#6C2EF2] px-2 py-2 overflow-x-scroll">
         {events.map((event, idx) => (
           <button
             key={event.label}
             onClick={() => setActiveTab(idx)}
-            className={`relative flex items-center justify-center px-4 py-2 font-bold lg:w-[360px] text-base md:text-lg rounded-md transition-all duration-300 border-none outline-none focus:outline-none ${activeTab === idx ? "bg-[#6C2EF2]/80 text-white" : "bg-transparent text-[#E5E5E5]"}`}
-            style={{ minWidth: "80px" }}
+            className={`relative min-w-[120px] md:min-w-[80px] flex items-center justify-center px-6 py-2 font-bold text-base md:text-lg rounded-md transition-all duration-300 border-none outline-none cursor-pointer focus:outline-none ${activeTab === idx ? "bg-[#6C2EF2]/80 text-white" : "bg-transparent text-[#E5E5E5]"}`}
           >
             {activeTab === idx && (
-              <span className="absolute left-2 top-1/2 -translate-y-1/2">
+              <Motion.span className="absolute left-2 top-1/2 -translate-y-1/2" animate={{ rotate: 360 }} transition={{ repeat: Infinity, duration: 1.2, ease: "linear" }}>
                 <Image src={TimerDot} alt="active" width={18} height={18} />
-              </span>
+              </Motion.span>
             )}
             <span className="ml-6">{event.short}</span>
           </button>
@@ -54,11 +52,11 @@ function CountdownTimer({ targetDate }: { targetDate: string }) {
   }, [days, hours, minutes, seconds]);
 
   return (
-    <motion.div initial={{ scale: 0.7, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} transition={{ type: "spring", stiffness: 120, damping: 12 }} className="flex items-center justify-center w-full">
+    <Motion.div initial={{ scale: 0.7, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} transition={{ type: "spring", stiffness: 120, damping: 12 }} className="flex items-center justify-center w-full">
       <div className="w-full md:w-[820px] md:h-[200px] flex items-center justify-center bg-[#ffffff]/10 rounded-sm border border-white/50 py-8 px-4 shadow-[inset_0_4px_6px_rgba(255,255,255,0.4)]">
         {isExpired ? <ExpiredNotice /> : <ShowCounter days={days} hours={hours} minutes={minutes} seconds={seconds} />}
       </div>
-    </motion.div>
+    </Motion.div>
   );
 }
 
@@ -96,11 +94,22 @@ function Separator() {
 }
 
 function DateTimeDisplay({ value, type }: { value?: number; type: string }) {
+  const displayValue = (value ?? 0) < 10 ? `0${value}` : `${value}`;
+
   return (
     <div className="flex flex-col items-center justify-center w-16 md:w-24">
-      <motion.p className="font-bold text-4xl md:text-5xl lg:text-8xl text-white drop-shadow-lg" animate={{ y: 0, opacity: 1 }} transition={{ type: "spring", damping: 10, stiffness: 100, mass: 1 }}>
-        {(value ?? 0) < 10 ? `0${value}` : value}
-      </motion.p>
+      <AnimatePresence mode="popLayout">
+        <Motion.span
+          key={displayValue}
+          initial={{ y: -30, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          exit={{ y: 30, opacity: 0 }}
+          transition={{ type: "spring", stiffness: 200, damping: 20 }}
+          className=" font-bold text-4xl md:text-5xl lg:text-8xl text-white drop-shadow-lg"
+        >
+          {displayValue}
+        </Motion.span>
+      </AnimatePresence>
       <span className="-mt-1 text-base md:text-lg lg:text-xl lowercase opacity-80 text-white tracking-wide">{type}</span>
     </div>
   );

@@ -31,6 +31,29 @@ export function GlobalFooter() {
             <MediaPartner />
           </div>
         </div>
+
+        <div className="mt-6 space-y-1 py-6">
+          <p className="text-center font-montserrat text-sm leading-5 text-white">
+            Passionally crafted by{" "}
+            <Link href="https://github.com/BintangKurniawan" target="_blank" className="font-mono font-semibold hover:underline text-neutral-100">
+              Bintang
+            </Link>
+            {", "}
+            <Link href="https://github.com/gchristiansun" target="_blank" className="font-mono font-semibold hover:underline text-neutral-100">
+              Chris
+            </Link>
+            {", "}
+            <Link href="https://github.com/Zreaei" target="_blank" className="font-mono font-semibold hover:underline text-neutral-100">
+              Zamzami
+            </Link>
+            . Supported by Department{" "}
+            <a href="https://himarpl.org/be/kominfo" target="_blank" className="font-mono font-semibold hover:underline text-neutral-100" rel="noopener noreferrer">
+              KOMINFO
+            </a>
+            .
+          </p>
+          <p className="text-center text-sm leading-5">&copy; 2025 HIMARPL UPI, All rights reserved.</p>
+        </div>
       </div>
     </footer>
   );
